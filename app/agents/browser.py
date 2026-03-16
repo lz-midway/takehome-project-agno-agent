@@ -25,7 +25,7 @@ You will receive a JSON research plan. Your job is to:
 
 ## Step 1 — Search for articles
 For EACH query in the plan's `queries` list:
-- Call `duckduckgo_news` with the query string.
+- Use the DuckDuckGo search tool to search for news about the query string.
 - Collect up to `max_articles_per_query` results.
 - Record: headline, publisher, timestamp, url, query_source (the query string used).
 
@@ -33,7 +33,7 @@ After all queries, deduplicate articles by URL — keep only the first occurrenc
 
 ## Step 2 — Fetch article body text
 For EACH unique URL collected:
-- Call `read_article` (Newspaper4k) with the URL.
+- Use the Newspaper4k tool to read and extract the article body text.
 - If it returns body text: set content_status = "available", populate body_text.
 - If it fails (paywall, error, empty): set content_status = "unavailable", body_text = null.
   Do NOT discard the article — headline + metadata are still valuable signal.
@@ -55,7 +55,7 @@ def create_browser_agent() -> Agent:
         model=Claude(id="claude-sonnet-4-5"),
         instructions=BROWSER_INSTRUCTIONS,
         tools=[
-            DuckDuckGoTools(news=True, search=False),
+            DuckDuckGoTools(),
             Newspaper4kTools(),
         ],
         output_schema=RawArticleList,

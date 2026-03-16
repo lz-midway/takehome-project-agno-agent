@@ -1,5 +1,9 @@
-# Core framework
-agno
+# Core framework (with AgentOS extras)
+agno[os]
+
+# Web server (required by AgentOS)
+fastapi
+uvicorn[standard]
 
 # LLM provider
 anthropic
@@ -21,3 +25,5 @@ pydantic>=2.0.0
 # Testing
 pytest
 pytest-mock
+
+ddgs
