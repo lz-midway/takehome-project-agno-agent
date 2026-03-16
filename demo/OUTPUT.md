@@ -87,7 +87,7 @@ WARNING  Error reading article from https://www.techrepublic.com/article/news-ap
   📊 Observability log → data/logs/apple_inc_20260316_022142.json
 ```
 ────────────────────────────────────────────────────────────
-  ✅  FINAL REPORT — APPLE INC
+  FINAL REPORT — APPLE INC
   Period: Dec 15, 2025 – Mar 15, 2026
   Generated: 2026-03-16T02:10:49.466985Z
 ────────────────────────────────────────────────────────────
