@@ -92,18 +92,10 @@ restating headlines. No tools — pure LLM reasoning.
 ### AI-Assisted Coding — Claude (via Claude.ai)
 The majority of this project was built with Claude as a coding assistant:
 
-- **Greenfield framework setup**: overall project structure, Agno Workflow boilerplate,
-  Pydantic state schema design, and agent scaffolding were all generated with Claude and
-  then refined iteratively.
-- **Bug research and diagnosis**: import path failures (`RunResponse`, `DuckDuckGoTools`
-  constructor changes), `session_state` being `None` without a DB, `model_post_init` not
-  firing in agno 2.5.9 — Claude helped trace each error to its root cause and propose
-  fixes.
-- **Refactoring**: the transition from stringly-typed handoffs (raw `json.dumps` dicts)
-  to fully typed Pydantic models with a discriminated `WorkflowEvent` union was done with
-  Claude's assistance.
-- **Test scaffolding**: unit test structure, mock strategy (patching `with_retry`,
-  `_save_report`, `ObservabilityTracker.save`), and fixture design were AI-assisted.
+- **Greenfield framework setup**
+- **Bug research and diagnosis**
+- **Refactoring**
+- **Test scaffolding**
 
 ### Runtime Tools (within the agentic pipeline)
 - **`DuckDuckGoTools`** (agno built-in) — news search; used exclusively by the Browser Agent
