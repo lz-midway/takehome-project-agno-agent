@@ -5,7 +5,7 @@ python3 main.py
 ```
 
 ```
-/Users/joezhou/Desktop/Mac_Documents/Applying for jobs/ra_lab_take_home/takehome-project-agno-agent/.venv/lib/python3.11/site-packages/newspaper/parsers.py:19: UserWarning: nltk is not installed. Some NLP features will be unavailable. Install it with: pip install 'newspaper4k[nlp]'
+parsers.py:19: UserWarning: nltk is not installed. Some NLP features will be unavailable. Install it with: pip install 'newspaper4k[nlp]'
   from . import text as txt
 19:05:16 | INFO    | newspaper.network | Using requests library for http requests (alternative cloudscraper library is recommended for bypassing Cloudflare protection)
 
