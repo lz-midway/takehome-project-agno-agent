@@ -7,15 +7,8 @@ Orchestrates the four-agent pipeline:
 Every agent handoff uses a typed Pydantic model — no raw strings or dicts
 are passed between stages. The workflow yields typed WorkflowEvent objects:
   ProgressEvent — pipeline progress messages
-  ErrorEvent    — hard (fatal) or soft (degraded) failures
+  ErrorEvent    — failures
   ReportEvent   — final structured output with file paths
-
-Failure modes:
-  1. HARD — unparseable message / empty company  → ErrorEvent(fatal=True), abort
-  2. HARD — any agent fails after 3 retries      → ErrorEvent(fatal=True), abort
-  3. HARD — browser returns 0 articles           → ErrorEvent(fatal=True), abort
-  4. SOFT — < 3 articles after extraction        → ErrorEvent(fatal=False), continue degraded
-  5. SOFT — individual article fetch failure     → content_status=unavailable, keep article
 """
 
 from __future__ import annotations
@@ -213,11 +206,8 @@ class NewsAggregatorWorkflow(Workflow):
     compiler_agent:   Agent = None  # type: ignore[assignment]
 
     def _ensure_agents(self) -> None:
-        """Lazily initialise agents on first run() call.
-
-        We cannot rely on model_post_init because Agno's Workflow base class
-        does not guarantee it is called in all versions. Lazy init here is
-        version-agnostic and avoids import-time side-effects.
+        """Lazily initialise agents on first run() call
+        To check if each agent is None, ensure the code works in different versions of Agno
         """
         if self.planner_agent is None:
             self.planner_agent = create_planner_agent()
